@@ -2,36 +2,31 @@ Design
 ======
 
 Models
-======
+------
 
-Team
-----
+### Team
 
 * name
 * tag
 
-Game
-----
+### Game
 
 * name
 * abreviation
 
-Member
-------
+### Member
 
 * team_id
 * real_name
 * alias
 * active
 
-TeamMembers
------------
+### TeamMembers
 
 * team_id
 * member_id
 
-Match
------
+### Match
 
 * team1
 * team2
@@ -39,8 +34,7 @@ Match
 * score2
 * approved
 
-MatchPlayerStats
-----------------
+### MatchPlayerStats
 
 * member_id
 * match_id
@@ -48,8 +42,7 @@ MatchPlayerStats
 * deaths
 * points
 
-Tournament
-----------
+### Tournament
 
 * name
 * active
