@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  home_team_score: 1
+  away_team_score: 1
+  approved: false
+
+two:
+  home_team_score: 1
+  away_team_score: 1
+  approved: false

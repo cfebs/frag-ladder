@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  real_name: MyString
+  alias: MyString
+  active: false
+
+two:
+  real_name: MyString
+  alias: MyString
+  active: false

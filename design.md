@@ -16,7 +16,6 @@ Models
 
 ### Member
 
-* team_id
 * real_name
 * alias
 * active

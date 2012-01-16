@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  member_id: 1
+  match_id: 1
+  kills: 1
+  deaths: 1
+  points: 1
+
+two:
+  member_id: 1
+  match_id: 1
+  kills: 1
+  deaths: 1
+  points: 1
