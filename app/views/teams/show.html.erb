@@ -1,0 +1,17 @@
+<h2><%= @team.name %></h2>
+
+<h3>Members</h3>
+<% @team.members.each do |member| %>
+    <div>
+        <%= member.alias %>
+    </div>
+<% end %>
+<hr>
+
+<h3>Leagues</h3>
+<% @leagues.each do |l| %>
+    <div>
+        <%= l.name %>
+    </div>
+<% end %>
+<h3>Matches</h3>

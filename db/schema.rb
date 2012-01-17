@@ -28,6 +28,11 @@ ActiveRecord::Schema.define(:version => 20120116015641) do
     t.datetime "updated_at"
   end
 
+  create_table "leagues_teams", :force => true do |t|
+    t.integer "league_id"
+    t.integer "team_id"
+  end
+
   create_table "matches", :force => true do |t|
     t.integer  "league_id"
     t.integer  "home_team"
@@ -57,16 +62,16 @@ ActiveRecord::Schema.define(:version => 20120116015641) do
     t.datetime "updated_at"
   end
 
+  create_table "members_teams", :force => true do |t|
+    t.integer "team_id"
+    t.integer "member_id"
+  end
+
   create_table "teams", :force => true do |t|
     t.string   "name"
     t.string   "tag"
     t.datetime "created_at"
     t.datetime "updated_at"
-  end
-
-  create_table "teams_members", :force => true do |t|
-    t.integer "team_id"
-    t.integer "member_id"
   end
 
 end

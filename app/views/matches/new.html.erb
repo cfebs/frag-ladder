@@ -1,0 +1,34 @@
+<h1>Matches#new</h1>
+
+<%= form_for @match do |f| %>
+    <%= errors_for @match %>
+    <div class="span-24">
+    <div class="span-12">
+        <h2>Home</h2>
+        <p>
+            <%= collection_select :match, :home_team, Team.all, :id, :name %>
+        </p>
+        <hr>
+        <p>
+            <%= f.label :home_team_score %><br>
+            <%= f.text_field :home_team_score %>
+        </p>
+        <h3>Player Stats</h3>
+    </div>
+
+    <div class="span-12 last">
+        <h2>Away</h2>
+        <p>
+            <%= collection_select :match, :away_team, Team.all, :id, :name %>
+        </p>
+        <hr>
+        <p>
+            <%= f.label :away_team_score %><br>
+            <%= f.text_field :away_team_score %>
+        </p>
+    </div>
+</div>
+
+<%= f.submit 'Advance to Player Stats' %>
+
+<% end %>

@@ -1,6 +1,6 @@
 class TeamsMembers < ActiveRecord::Migration
   def change
-    create_table :teams_members do |t|
+    create_table :members_teams do |t|
       t.references :team
       t.references :member
     end

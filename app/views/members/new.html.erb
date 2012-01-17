@@ -1,0 +1,5 @@
+<h2><%= "Add #{@team.name} Member" %></h2>
+
+<%= form_for [@team, @team.members.build] do |f| %>
+    <%= render 'fields', :f => f %>
+<% end %>

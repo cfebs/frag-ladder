@@ -1,0 +1,12 @@
+<h2>Teams</h2>
+
+<p>
+<%= link_to 'New Team', new_team_path %>
+</p>
+
+<% @teams.each do |team| %>
+    <hr>
+    <div class="team">
+        <h3><%= link_to "#{team.name} #{team.tag}", team_path(team) %></h3>
+    </div>
+<% end %>
