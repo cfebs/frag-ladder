@@ -2,6 +2,8 @@ class Team < ActiveRecord::Base
   validates :name, :presence => true
   validates :tag, :presence => true
 
+  has_many :matches
+
   has_many :team_members
   has_many :members, :through => :team_members
 

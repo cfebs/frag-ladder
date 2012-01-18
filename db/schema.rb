@@ -35,8 +35,8 @@ ActiveRecord::Schema.define(:version => 20120116015641) do
 
   create_table "matches", :force => true do |t|
     t.integer  "league_id"
-    t.integer  "home_team"
-    t.integer  "away_team"
+    t.integer  "home_team_id"
+    t.integer  "away_team_id"
     t.integer  "home_team_score"
     t.integer  "away_team_score"
     t.boolean  "approved"
