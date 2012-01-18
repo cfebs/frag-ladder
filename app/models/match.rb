@@ -9,6 +9,10 @@ class Match < ActiveRecord::Base
 
   belongs_to :league
 
+  # allows for @match.home_team.name
+  belongs_to :home_team, :class_name => 'Team', :foreign_key => "home_team"
+  belongs_to :away_team, :class_name => 'Team', :foreign_key => "away_team"
+
   def not_same_team
     if self.home_team == self.away_team
       errors[:base] << 'Cannot record match as the same home/away team'

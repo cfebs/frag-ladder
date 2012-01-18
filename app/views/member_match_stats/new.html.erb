@@ -1,0 +1,23 @@
+<h1>Enter Player Stats</h1>
+<div class="span-24">
+    <div class="span-12">
+        <h2>Home</h2>
+        <h3><%= @home_team.name %> <%= @match.home_team_score %></h3>
+        <hr>
+        <h3>Player Stats</h3>
+        <div>
+            <%= render :partial => 'player_stats', :locals => { :team => @home_team } %>
+        </div>
+    </div>
+
+    <div class="span-12 last">
+        <h2>Away</h2>
+        <h3><%= @away_team.name %> <%= @match.away_team_score %></h3>
+        <hr>
+        <h3>Player Stats</h3>
+        <div>
+            <%= render :partial => 'player_stats', :locals => { :team => @away_team } %>
+        </div>
+    </div>
+</div>
+

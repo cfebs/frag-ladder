@@ -1,0 +1,29 @@
+<table>
+    <tr>
+        <th>Player</th>
+        <th>Kills</th>
+        <th>Deaths</th>
+        <th>Points</th>
+    <tr>
+    <tr class="player_row">
+        <td>
+            <%= collection_select :match_member_stats, :member_id, team.members.all, :id, :alias %>
+        </td>
+
+        <td>
+            <%= text_field :match_member_stats, :kills, :size => 3 %>
+        </td>
+        <td>
+            <%= text_field :match_member_stats, :deaths, :size => 3 %>
+        </td>
+        <td>
+            <%= text_field :match_member_stats, :points, :size => 3 %>
+        </td>
+    </tr>
+</table>
+
+<div class="button">
+    Add Player
+</div>
+
+

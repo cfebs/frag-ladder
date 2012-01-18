@@ -12,7 +12,7 @@ class MatchesController < ApplicationController
 
     if @match.save
       #redirect_to matches_player_stats
-      redirect_to matches_path, :success => 'Match saved'
+      redirect_to new_match_member_match_stat_path(@match), :success => 'Match saved'
     else
       render :new
     end

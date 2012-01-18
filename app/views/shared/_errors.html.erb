@@ -1,3 +1,4 @@
+<% if !obj.errors.empty? %>
 <div class="error">
     <ul>
         <% obj.errors.full_messages.each do |error| %>
@@ -5,3 +6,4 @@
         <% end %>
     </ul>
 </div>
+<% end %>
