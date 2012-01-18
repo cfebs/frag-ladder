@@ -1,4 +1,10 @@
 class Member < ActiveRecord::Base
   validates :alias, :presence => true
-  has_and_belongs_to_many :teams
+  validate :unique_alias_in_team
+
+  has_many :team_members
+  has_many :teams, :through => :team_members
+
+  def unique_alias_in_team
+  end
 end

@@ -8,5 +8,8 @@ $( function () {
         var new_row = table.find('.player_row').first().clone(true,true);
         var last_row = table.find('.player_row').last();
         new_row.insertAfter(last_row);
+        new_row.find('input[type="text"]').each( function() {
+            $(this).val('');
+        });
     });
 });

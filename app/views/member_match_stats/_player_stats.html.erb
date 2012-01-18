@@ -11,7 +11,8 @@
     <tr>
     <tr class="player_row">
         <td>
-            <%= collection_select :match_member_stats, :member_id, team.members.all, :id, :alias, :prompt => true %>
+            <%= collection_select 'match_member_stats[member_id]', '', team.members.all, :id, :alias, :prompt => true %>
+            <% select('match_member_stats[member_id]', '', team.members.all.collect { |m| [m.alias, m.id] }) %>
         </td>
 
         <td>
