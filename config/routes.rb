@@ -1,7 +1,7 @@
 FragLadder::Application.routes.draw do
 
   resources :matches do
-    resources :member_match_stats
+    resources :member_match_records
   end
 
   resources :teams do

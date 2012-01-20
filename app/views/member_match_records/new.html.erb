@@ -1,13 +1,13 @@
 <h1>Enter Player Stats</h1>
 <div class="span-24">
-    <%= form_tag('/member_match_stats/') do %>
+    <%= form_for @match do |f| %>
     <div class="span-12">
         <h2>Home</h2>
         <h3><%= @home_team.name %> <%= @match.home_team_score %></h3>
         <hr>
         <h3>Player Stats</h3>
         <div>
-            <%= render :partial => 'player_stats', :locals => { :team => @home_team } %>
+            <%= render :partial => 'player_stats', :locals => {:f => f, :team => @home_team } %>
         </div>
     </div>
 
@@ -17,9 +17,11 @@
         <hr>
         <h3>Player Stats</h3>
         <div>
-            <%= render :partial => 'player_stats', :locals => { :team => @away_team } %>
+            <%= render :partial => 'player_stats', :locals => {:f => f, :team => @away_team } %>
         </div>
     </div>
+    <div>
+    <br class="clear">
     <%= submit_tag %>
     <% end %>
 </div>

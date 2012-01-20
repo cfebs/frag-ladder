@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class MemberMatchStatsTest < ActiveSupport::TestCase
+class MemberMatchRecordsTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

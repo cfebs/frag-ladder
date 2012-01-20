@@ -1,2 +1,49 @@
 <h1>Matches#show</h1>
-<p>Find me in app/views/matches/show.html.erb</p>
+<div class="span-24">
+    <div class="span-12">
+        <h2><%= @match.home_team.name %> <%= @match.away_team_score %></h2>
+        <hr>
+        <h3>Player Stats</h3>
+        <table>
+            <tr>
+                <th>player</th>
+                <th>kills</th>
+                <th>deaths</th>
+                <th>points</th>
+            </tr>
+            <% @match.home_records.each do |r| %>
+                <tr>
+                    <td><%= r.member.alias %></td>
+                    <td><%= r.kills%></td>
+                    <td><%= r.deaths%></td>
+                    <td><%= r.points%></td>
+                </tr>
+            <% end %>
+        </table>
+    </div>
+
+    <div class="span-12 last">
+        <h2><%= @match.away_team.name %> <%= @match.away_team_score %></h2>
+        <hr>
+        <h3>Player Stats</h3>
+
+        <table>
+            <tr>
+                <th>player</th>
+                <th>kills</th>
+                <th>deaths</th>
+                <th>points</th>
+            </tr>
+
+        <% @match.away_records.each do |r| %>
+            <tr>
+                <td><%= r.member.alias %></td>
+                <td><%= r.kills%></td>
+                <td><%= r.deaths%></td>
+                <td><%= r.points%></td>
+            </tr>
+        <% end %>
+        </table>
+
+    </div>
+</div>

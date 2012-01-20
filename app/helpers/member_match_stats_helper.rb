@@ -1,2 +1,0 @@
-module MemberMatchStatsHelper
-end

@@ -1,0 +1,29 @@
+<div class="clickable button add_player">
+    Add Player
+</div>
+
+<table class="player_table">
+    <tr>
+        <th>Player</th>
+        <th>Kills</th>
+        <th>Deaths</th>
+        <th>Points</th>
+    <tr>
+    <%= f.fields_for :member_match_records do |s| %>
+    <tr class="player_row">
+        <td>
+            <%= s.collection_select :member_id, team.members.all, :id, :alias, :prompt => true %>
+        </td>
+
+        <td>
+            <%= s.text_field :kills, :size => 3 %>
+        </td>
+        <td>
+            <%= s.text_field :deaths, :size => 3 %>
+        </td>
+        <td>
+            <%= s.text_field :points, :size => 3 %>
+        </td>
+    </tr>
+    <% end %>
+</table>
