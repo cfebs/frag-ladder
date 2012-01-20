@@ -21,7 +21,6 @@ class MemberMatchRecordsController < ApplicationController
   end
 
   def show
-    @match = Match.find(params[:id])
   end
 
 end

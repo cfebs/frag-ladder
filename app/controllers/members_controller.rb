@@ -6,12 +6,15 @@ class MembersController < ApplicationController
 
   def new
     @team = Team.find(params[:team_id])
+    @team_member = @team.members.build
   end
 
   def create
     @team = Team.find(params[:team_id])
-    @member = @team.members.create(params[:member])
-    if @member.valid?
+    @member = @team.members.new(params[:member])
+    @team.members << @member
+
+    if @member.save
       redirect_to team_path(@team), :success => 'Member created'
     else
       render :new

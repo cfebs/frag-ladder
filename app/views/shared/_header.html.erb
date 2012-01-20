@@ -10,12 +10,6 @@
 
 </ul>
 
-<div class="flash">
-    <% if flash[:notice] %>
-        <p class="notice"><%= flash[:notice] %></p>
-    <% elsif flash[:success] %>
-        <p class="success"><%= flash[:success] %></p>
-    <% elsif flash[:error] %>
-        <p class="error"><%= flash[:error] %></p>
-    <% end %>
-</div>
+<% flash.each do |key, value| %>
+    <%= content_tag(:div, value, :class => "flash #{key}") %>
+<% end %>

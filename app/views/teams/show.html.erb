@@ -21,6 +21,6 @@
 
 <h3>Matches</h3>
 
-<% @team.matches.each do |m| %>
-    <%= link_to match_path m %>
+<% @team.all_matches.each do |m| %>
+    <%= link_to "#{m.home_team.name} vs. #{m.away_team.name}", match_path(m) %><br>
 <% end %>
