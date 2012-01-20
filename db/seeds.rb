@@ -10,6 +10,8 @@ c = Team.create(name: 'Catholics', tag: 'c')
 
 j.members.create(alias: 'moses')
 j.members.create(alias: 'hollywood')
+j.members.create(alias: 'money')
 
 c.members.create(alias: 'jesus')
 c.members.create(alias: 'usa')
+c.members.create(alias: 'pope')
