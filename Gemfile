@@ -17,7 +17,7 @@ group :assets do
 end
 
 group :production do
-    gem install activerecord-postgresql-adapter
+    gem activerecord-postgresql-adapter
 end
 
 gem 'jquery-rails'
