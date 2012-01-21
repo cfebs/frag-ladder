@@ -1,0 +1,5 @@
+<h1>Leagues#new</h1>
+<%= form_for @league do |f| %>
+    <%= errors_for @league %>
+    <%= render 'fields', :f => f %>
+<% end %>
