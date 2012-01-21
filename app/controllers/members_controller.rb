@@ -15,7 +15,8 @@ class MembersController < ApplicationController
     @team.members << @member
 
     if @member.save
-      redirect_to team_path(@team), :success => 'Member created'
+      flash[:success] = 'Member created'
+      redirect_to team_path(@team)
     else
       render :new
     end
@@ -36,6 +37,9 @@ class MembersController < ApplicationController
 
   def show
     @member = Team.find(params[:id])
+  end
+
+  def grid
   end
 
 end

@@ -1,5 +1,9 @@
 FragLadder::Application.routes.draw do
 
+  resources :leagues do
+    resources :teams
+  end
+
   resources :matches do
     resources :member_match_records
   end

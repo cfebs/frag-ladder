@@ -1,3 +1,13 @@
+<h3>Leagues</h3>
+<div>
+
+    <% League.all.each do |l| %>
+        <%= check_box_tag 'team[league_ids][]', l.id, @team.leagues.include?(l) %> <%= l.name %>
+    <% end %>
+
+</div>
+
+<h3>Other Info</h3>
 <div>
     <%= f.label :name %><br>
     <%= f.text_field :name %>

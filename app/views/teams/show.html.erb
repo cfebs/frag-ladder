@@ -1,10 +1,10 @@
-<h2><%= @team.name %></h2>
+<h2><%= @team.name %> - <%= link_to 'edit', edit_team_path(@team)%></h2>
 
 <h3>Members</h3>
 <p><%= link_to "New Member", new_team_member_path(@team) %></p>
 <p>
 <% @team.members.each do |member| %>
-    <%= member.alias %><br>
+    <%= member.alias %> <br>
 <% end %>
 </p>
 <hr>

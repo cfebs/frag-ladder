@@ -7,7 +7,7 @@ class TeamMember < ActiveRecord::Base
   def unique_alias_per_team
     self.team.members.each do |m|
       if m.alias == self.member.alias
-        self.member.errors.add(:alias, 'Member aliases per team must be unique')
+        #record.errors.add('Member aliases per team must be unique')
         return
       end
     end

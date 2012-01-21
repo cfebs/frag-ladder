@@ -16,11 +16,7 @@
 
     <%= render 'shared/header' %>
 
-    <% flash.each do |key, value| %>
-        <%= content_tag(:div, value, :class => "flash #{key}") %>
-    <% end %>
-
-    <div style="padding-left: 16px">
+    <div>
         <%= yield %>
     </div>
     <%= render 'shared/footer' %>
