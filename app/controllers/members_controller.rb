@@ -40,6 +40,9 @@ class MembersController < ApplicationController
   end
 
   def grid
+     # table
+     #  :columns
+     #    :header,
   end
 
 end

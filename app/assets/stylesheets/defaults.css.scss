@@ -13,10 +13,12 @@ h1,h2,h3,h4,h5 {
 a {
     color: #f0604d;
     font-weight: bold;
+    text-decoration: none;
 }
 
 a:hover {
     color: #888;
+    text-decoration: underline;
 }
 
 select {

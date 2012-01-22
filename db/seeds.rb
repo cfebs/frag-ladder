@@ -5,13 +5,17 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-j = Team.create(name: 'Jews', tag: 'j')
-c = Team.create(name: 'Catholics', tag: 'c')
 
-j.members.create(alias: 'moses')
-j.members.create(alias: 'hollywood')
-j.members.create(alias: 'money')
+league = League.create(name: 'TF2fpg')
+season = league.season.create(name: 'TF2fpg1')
 
-c.members.create(alias: 'jesus')
-c.members.create(alias: 'usa')
-c.members.create(alias: 'pope')
+frag = season.teams.create(name: 'Frag', tag: '`fp-')
+ruth = season.teams.create(name: 'Ruthless', tag: 'R7')
+
+frag.members.create(alias: 'cr4sh')
+frag.members.create(alias: 'coco')
+frag.members.create(alias: 'ricr')
+
+ruth.members.create(alias: 'jesus')
+ruth.members.create(alias: 'jesus')
+ruth.members.create(alias: 'jesus')

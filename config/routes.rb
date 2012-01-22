@@ -1,15 +1,29 @@
 FragLadder::Application.routes.draw do
 
   resources :leagues do
-    resources :teams
+    resources :seasons
+  end
+
+  resources :seasons
+
+  resources :seasons do
+    get 'grid'
+
+    resources :teams do
+      get 'grid'
+    end
+
+    resources :matches
+  end
+
+  resources :teams do
+    resources :members do
+      get 'grid'
+    end
   end
 
   resources :matches do
     resources :member_match_records
-  end
-
-  resources :teams do
-    resources :members
   end
 
   root :to => 'teams#index'

@@ -1,5 +1,7 @@
 <h2>New Team</h2>
+<p>This will add a team to the selected season (<%= @season.name %>)</p>
 
-<%= form_for @team do |f| %>
+<%= form_for [@season, @team] do |f| %>
+    <%= errors_for @team %>
     <%= render 'fields', :f => f %>
 <% end %>

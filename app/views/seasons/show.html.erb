@@ -1,0 +1,13 @@
+<h2><%= @season.name %></h2>
+<ul>
+    <li><%= link_to 'Add Team', new_season_team_path(@season) %></li>
+</ul>
+
+<h3>News</h3>
+<p><i>Nothing to report. Have fun with the matches</i></p>
+
+
+<h3>Grid</h3>
+<%= render 'grid' %>
+
+<h3>Matches</h3>

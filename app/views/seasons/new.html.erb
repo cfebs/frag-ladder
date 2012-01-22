@@ -1,0 +1,5 @@
+<h2>New Season</h2>
+<%= form_for [@league, @season] do |f| %>
+    <%= errors_for @season %>
+    <%= render 'fields', :f => f %>
+<% end %>

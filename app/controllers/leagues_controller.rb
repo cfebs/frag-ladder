@@ -9,7 +9,6 @@ class LeaguesController < ApplicationController
 
   def create
     @league = League.new(params[:league])
-    # TODO add something for active leagues, overwrite existing actives
 
     if @league.save
       flash[:success] = 'League created'
@@ -20,6 +19,11 @@ class LeaguesController < ApplicationController
   end
 
   def edit
+    @league = League.find(params[:id])
+  end
+
+  def show
+    @league = League.find(params[:id])
   end
 
   def grid

@@ -1,27 +1,9 @@
-<h2>Le Grid for Current Season</h2>
+<h2>Our Leagues</h2>
 <p>
     <%= link_to 'New League', new_league_path %>
 </p>
-<table class="grid season_grid">
-    <tr>
-        <th>#</th>
-        <th>Team</th>
-        <th>Wins</th>
-        <th>Losses</th>
-        <th>Ties</th>
-        <th>Total</th>
-    </tr>
-    <% 20.times do |fake| %>
-    <tr>
-        <td><%=fake+1%></td>
-        <% 5.times do |r| %>
-            <td>hmmm</td>
-        <% end %>
-    </tr>
-    <% end %>
-</table>
 
-<h2>Past Seasons</h2>
-<% @leagues.each do |l| %>
-    <%= link_to l.name, league_path(l) %><br>
+<h3>Leagues</h3>
+<% @leagues.each do |league| %>
+    <h3><%= link_to league.name, league_path(league) %></h3>
 <% end %>

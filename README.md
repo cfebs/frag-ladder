@@ -6,10 +6,11 @@ A table laddering system for tournaments and season play
 Functionality TODO
 ------------------
 
-- *(complete)* Basic Match Reporting
-    - Leagues have matches which consisit of two teams which have members each with their own specific per-match stats
+- *(refactoring)* Basic Match Reporting
+    - Leagues have seasons which have matches which consist of two teams which have members each with their own specific per-match stats
 
 - Advanced Match Reporting
+    - Maps and rounds
     - Account for points in certain situations
     - Constraints on match play
 
@@ -29,7 +30,7 @@ Remaining TODO
 - Forums
 
 - Styling
-    - Consistant menus
+    - Consistent menus
     - Color Choices
     - Icons
 
