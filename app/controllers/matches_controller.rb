@@ -4,11 +4,14 @@ class MatchesController < ApplicationController
   end
 
   def new
-    @match = Match.new
+    @season = Season.find(params[:season_id])
+    @match = @season.matches.build
   end
 
   def create
+    @season = Season.find(params[:season_id])
     @match = Match.new(params[:match])
+    @season.matches << @match
 
     if @match.save
       #redirect_to matches_player_stats

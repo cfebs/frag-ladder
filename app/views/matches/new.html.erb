@@ -1,12 +1,12 @@
 <h1>Matches#new</h1>
 
-<%= form_for @match do |f| %>
+<%= form_for [@season, @match] do |f| %>
     <%= errors_for @match %>
 <div class="span-24">
     <div class="span-12">
         <h2>Home</h2>
         <p>
-            <%= f.collection_select :home_team_id, Team.all, :id, :name, :prompt => true %>
+            <%= f.collection_select :home_team_id, @season.teams, :id, :name, :prompt => true %>
         </p>
         <hr>
         <p>
@@ -19,7 +19,7 @@
     <div class="span-12 last">
         <h2>Away</h2>
         <p>
-            <%= f.collection_select :away_team_id, Team.all, :id, :name, :prompt => true %>
+            <%= f.collection_select :away_team_id, @season.teams, :id, :name, :prompt => true %>
         </p>
         <hr>
         <p>

@@ -1,7 +1,10 @@
 <h1>Matches#show</h1>
+<p>
+    <%= link_to 'back to season', season_path(@match.season) %>
+</p>
 <div class="span-24">
     <div class="span-12">
-        <h2><%= @match.home_team.name %> <%= @match.away_team_score %></h2>
+        <h2><%= @match.home_team.name %> <%= @match.home_team_score %></h2>
         <hr>
         <h3>Player Stats</h3>
         <table>
