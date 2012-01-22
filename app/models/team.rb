@@ -8,6 +8,8 @@ class Team < ActiveRecord::Base
   HANDICAP_TIE_BONUS = 1
   HANDICAP_LOSS_BONUS = 1
 
+  PHASE_TWO_DATE = Time.now + 2.weeks
+
   validates :name, :presence => true
   validates :tag, :presence => true
 
@@ -20,21 +22,22 @@ class Team < ActiveRecord::Base
   has_and_belongs_to_many :seasons
 
   def all_matches
-    self.home_matches + self.away_matches
+    Match.where('home_team_id = ? or away_team_id = ?', self.id, self.id)
   end
 
   def wins
-    self.home_matches.where("home_team_score > away_team_score") +
-      self.away_matches.where("away_team_score > home_team_score")
+    self.all_matches.where('(home_team_id = ? AND home_team_score > away_team_score)
+      OR (away_team_id = ? AND away_team_score > away_team_score)', self.id, self.id)
   end
 
   def losses
-    self.home_matches.where("home_team_score < away_team_score") +
-      self.away_matches.where("away_team_score < home_team_score")
+    self.all_matches.where('(home_team_id = ? AND home_team_score < away_team_score)
+      OR (away_team_id = ? AND away_team_score < away_team_score)', self.id, self.id)
   end
 
   def ties
-    self.all_matches.where("home_team_score = away_team_score")
+    self.all_matches.where('(home_team_id = ? AND home_team_score = away_team_score)
+      OR (away_team_id = ? AND away_team_score = away_team_score)', self.id, self.id)
   end
 
   def win_percentage
@@ -44,44 +47,44 @@ class Team < ActiveRecord::Base
 
   # First Play Matches
   def first_play_wins
-    self.wins.select('distinct(home_team_id, away_team_id)')
+    self.wins.select('distinct home_team_id, away_team_id')
   end
 
-  def first_play_wins
-    self.losses.select('distinct(home_team_id, away_team_id)')
+  def first_play_losses
+    self.losses.select('distinct home_team_id, away_team_id')
   end
 
   def first_play_ties
-    self.ties.select('distinct(home_team_id, away_team_id)')
+    self.ties.select('distinct home_team_id, away_team_id')
   end
 
   # Handicap Matches
   def handicap_losses
-    self.losses.where('created_at > ?', Season.phase_two_date)
+    self.losses.where('created_at > ?', PHASE_TWO_DATE)
   end
 
   def handicap_ties
-    self.losses.where('created_at > ?', Season.phase_two_date)
+    self.losses.where('created_at > ?', PHASE_TWO_DATE)
   end
 
   # Point calculations
 
   def wins_plus_bonus
-    self.first_play_wins * FIRST_PLAY_BONUS + self.wins * WIN_POINTS
+    self.first_play_wins.length * FIRST_PLAY_BONUS + self.wins.length * WIN_VALUE
   end
 
   def ties_plus_bonus
-    self.first_play_ties * FIRST_PLAY_BONUS +
-      self.handicap_ties * HANDICAP_TIE_BONUS +
-      self.ties * TIE_POINTS
+    self.first_play_ties.length * FIRST_PLAY_BONUS +
+      self.handicap_ties.length * HANDICAP_TIE_BONUS +
+      self.ties.length * TIE_VALUE
   end
 
   def losses_plus_bonus
-    self.first_play_losses * FIRST_PLAY_BONUS +
-      self.handicap_losses * HANDICAP_LOSS_BONUS
+    self.first_play_losses.length * FIRST_PLAY_BONUS +
+      self.handicap_losses.length * HANDICAP_LOSS_BONUS
   end
 
-  def points
+  def total_points
     self.wins_plus_bonus + self.ties_plus_bonus + self.losses_plus_bonus
   end
 end

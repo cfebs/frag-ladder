@@ -7,12 +7,14 @@
         <th>Ties</th>
         <th>Total</th>
     </tr>
-    <% 20.times do |fake| %>
+    <% @teams.each_with_index do |team, i| %>
     <tr>
-        <td><%=fake+1%></td>
-        <% 5.times do |r| %>
-            <td>hmmm</td>
-        <% end %>
+        <td><%= i+1 %></td>
+        <td><%= link_to team.tag, season_team_path(@season, team) %></td>
+        <td><%= team.wins.length %></td>
+        <td><%= team.losses.length %></td>
+        <td><%= team.ties.length %></td>
+        <td><%= team.total_points %></td>
     </tr>
     <% end %>
 </table>

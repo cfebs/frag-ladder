@@ -18,6 +18,7 @@ class SeasonsController < ApplicationController
 
   def show
     @season = Season.find(params[:id])
+    @teams = @season.teams
   end
 
   def index
