@@ -19,6 +19,7 @@ class SeasonsController < ApplicationController
   def show
     @season = Season.find(params[:id])
     @teams = @season.teams
+    @teams.sort_by { |team| team.total_points }
   end
 
   def index

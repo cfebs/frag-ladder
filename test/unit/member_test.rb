@@ -1,7 +1,8 @@
 require 'test_helper'
 
 class MemberTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+  test "should not save without alias" do
+    member = Member.new
+    assert !member.save
+  end
 end

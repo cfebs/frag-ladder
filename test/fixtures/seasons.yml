@@ -1,7 +1,5 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
-one:
-  name: MyString
-
-two:
-  name: MyString
+season1:
+    name: TF2L S1
+    league_id: 1

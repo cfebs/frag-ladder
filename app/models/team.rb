@@ -27,17 +27,17 @@ class Team < ActiveRecord::Base
 
   def wins
     self.all_matches.where('(home_team_id = ? AND home_team_score > away_team_score)
-      OR (away_team_id = ? AND away_team_score > away_team_score)', self.id, self.id)
+      OR (away_team_id = ? AND away_team_score > home_team_score)', self.id, self.id)
   end
 
   def losses
     self.all_matches.where('(home_team_id = ? AND home_team_score < away_team_score)
-      OR (away_team_id = ? AND away_team_score < away_team_score)', self.id, self.id)
+      OR (away_team_id = ? AND away_team_score < home_team_score)', self.id, self.id)
   end
 
   def ties
     self.all_matches.where('(home_team_id = ? AND home_team_score = away_team_score)
-      OR (away_team_id = ? AND away_team_score = away_team_score)', self.id, self.id)
+      OR (away_team_id = ? AND away_team_score = home_team_score)', self.id, self.id)
   end
 
   def win_percentage
@@ -46,16 +46,9 @@ class Team < ActiveRecord::Base
   end
 
   # First Play Matches
-  def first_play_wins
-    self.wins.select('distinct home_team_id, away_team_id')
-  end
 
-  def first_play_losses
-    self.losses.select('distinct home_team_id, away_team_id')
-  end
-
-  def first_play_ties
-    self.ties.select('distinct home_team_id, away_team_id')
+  def first_played_bonus
+    FIRST_PLAY_BONUS * self.all_matches.select('distinct home_team_id, away_team_id').length
   end
 
   # Handicap Matches
@@ -69,22 +62,23 @@ class Team < ActiveRecord::Base
 
   # Point calculations
 
-  def wins_plus_bonus
-    self.first_play_wins.length * FIRST_PLAY_BONUS + self.wins.length * WIN_VALUE
+  def wins_plus_handicap
+    self.wins.length * WIN_VALUE
   end
 
-  def ties_plus_bonus
-    self.first_play_ties.length * FIRST_PLAY_BONUS +
-      self.handicap_ties.length * HANDICAP_TIE_BONUS +
+  def ties_plus_handicap
+    self.handicap_ties.length * HANDICAP_TIE_BONUS +
       self.ties.length * TIE_VALUE
   end
 
-  def losses_plus_bonus
-    self.first_play_losses.length * FIRST_PLAY_BONUS +
-      self.handicap_losses.length * HANDICAP_LOSS_BONUS
+  def losses_plus_handicap
+    self.handicap_losses.length * HANDICAP_LOSS_BONUS
   end
 
   def total_points
-    self.wins_plus_bonus + self.ties_plus_bonus + self.losses_plus_bonus
+     self.first_played_bonus +
+      self.wins_plus_handicap +
+      self.ties_plus_handicap +
+      self.losses_plus_handicap
   end
 end

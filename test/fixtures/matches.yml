@@ -1,11 +1,18 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
-one:
-  home_team_score: 1
+# win for team 1
+# loss for team 2
+match1:
+  home_team_id: 1
+  away_team_id: 2
   away_team_score: 1
+  home_team_score: 2
   approved: false
 
-two:
+#tie for team 1 and 2
+match2:
+  home_team_id: 1
+  away_team_id: 2
   home_team_score: 1
   away_team_score: 1
   approved: false

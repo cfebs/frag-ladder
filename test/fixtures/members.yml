@@ -1,11 +1,37 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
-one:
-  real_name: MyString
-  alias: MyString
-  active: false
+member1:
+    id: 1
+    real_name: Member1
+    alias: mem1
+    active: true
 
-two:
-  real_name: MyString
-  alias: MyString
-  active: false
+member2:
+    id: 2
+    real_name: Member2
+    alias: mem2
+    active: true
+
+member3:
+    id: 3
+    real_name: Member3
+    alias: mem3
+    active: true
+
+member4:
+    id: 4
+    real_name: Member4
+    alias: mem4
+    active: true
+
+member5:
+    id: 5
+    real_name: Member5
+    alias: mem5
+    active: true
+
+member6:
+    id: 6
+    real_name: Member6
+    alias: mem6
+    active: true

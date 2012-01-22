@@ -1,9 +1,6 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
-one:
-  name: MyString
-  active: false
-
-two:
-  name: MyString
-  active: false
+league1:
+    id: 1
+    name: Team Fortress League
+    active: true

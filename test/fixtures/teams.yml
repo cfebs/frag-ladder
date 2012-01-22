@@ -1,9 +1,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
-one:
-  name: MyString
-  tag: MyString
+team1:
+    id: 1
+    name: Team1
+    tag: t1
 
-two:
-  name: MyString
-  tag: MyString
+team2:
+    id: 2
+    name: Team2
+    tag: team2
