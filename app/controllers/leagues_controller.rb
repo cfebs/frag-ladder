@@ -22,4 +22,7 @@ class LeaguesController < ApplicationController
   def edit
   end
 
+  def grid
+  end
+
 end
