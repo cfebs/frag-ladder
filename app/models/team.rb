@@ -16,10 +16,52 @@ class Team < ActiveRecord::Base
   has_many :home_matches, :class_name => 'Match', :foreign_key => 'home_team_id'
   has_many :away_matches, :class_name => 'Match', :foreign_key => 'away_team_id'
 
-  has_many :team_members
-  has_many :members, :through => :team_members
+  has_many :members
 
-  has_and_belongs_to_many :seasons
+  belongs_to :seasons
+
+  # match functions
+  def win? match
+    if self.wins.include?(match)
+      true
+    else
+      false
+    end
+  end
+
+  def win_or_loss match
+    if self.win? match
+      return 'win'
+    else
+      return 'loss'
+    end
+  end
+
+  def get_plus match
+      self.match_score match
+  end
+
+  def get_minus match
+      self.opponent_score match
+  end
+
+  def match_score match
+    if match.home_team_id == self.id
+      match.home_team_score
+    else
+      match.away_team_score
+    end
+  end
+
+  def opponent_score match
+    if match.home_team_id == self.id
+      match.away_team_score
+    else
+      match.home_team_score
+    end
+  end
+
+
 
   def all_matches
     Match.where('home_team_id = ? or away_team_id = ?', self.id, self.id)
@@ -41,8 +83,11 @@ class Team < ActiveRecord::Base
   end
 
   def win_percentage
-    (self.wins.length / self.all_matches.length) if !self.all_matches.empty?
-    return 0
+    if !self.all_matches.empty?
+      (self.wins.length / self.all_matches.length) * 100
+    else
+      0
+    end
   end
 
   # First Play Matches

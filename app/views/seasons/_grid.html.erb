@@ -5,6 +5,7 @@
         <th>Wins</th>
         <th>Losses</th>
         <th>Ties</th>
+        <th>Win Percent</th>
         <th>Total</th>
     </tr>
     <% @teams.each_with_index do |team, i| %>
@@ -14,6 +15,7 @@
         <td><%= team.wins.length %></td>
         <td><%= team.losses.length %></td>
         <td><%= team.ties.length %></td>
+        <td><%= team.win_percentage %>%</td>
         <td><%= team.total_points %></td>
     </tr>
     <% end %>

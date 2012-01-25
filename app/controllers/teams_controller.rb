@@ -11,12 +11,10 @@ class TeamsController < ApplicationController
   def create
     @season = Season.find(params[:season_id])
     @team = @season.teams.new(params[:team])
-    @season.teams << @team
 
     if @team.save
       flash[:success] = 'Team created'
-      render :new
-      #redirect_to season_team_path(@season, @team)
+      redirect_to season_team_path(@season, @team)
     else
       render :new
     end
@@ -37,7 +35,6 @@ class TeamsController < ApplicationController
   end
 
   def show
-    @season = Team.find(params[:season_id])
     @team = Team.find(params[:id])
   end
 

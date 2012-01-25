@@ -8,12 +8,21 @@ class Match < ActiveRecord::Base
   validate :not_same_team
 
   belongs_to :season
+  belongs_to :map
 
   belongs_to :home_team, :class_name => 'Team', :foreign_key => "home_team_id"
   belongs_to :away_team, :class_name => 'Team', :foreign_key => "away_team_id"
 
   has_many :member_match_records
   accepts_nested_attributes_for :member_match_records
+
+  def tie?
+    home_team_score == away_team_score
+  end
+
+  def phase
+    '1'
+  end
 
   def not_same_team
     if self.home_team == self.away_team

@@ -12,11 +12,11 @@ class MembersController < ApplicationController
   def create
     @team = Team.find(params[:team_id])
     @member = @team.members.new(params[:member])
-    @team.members << @member
 
     if @member.save
+      @season = @team.season
       flash[:success] = 'Member created'
-      redirect_to team_path(@team)
+      redirect_to season_team_path(@season, @team)
     else
       render :new
     end

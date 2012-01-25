@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120122034846) do
+ActiveRecord::Schema.define(:version => 20120125031306) do
 
   create_table "games", :force => true do |t|
     t.string   "name"
@@ -28,6 +28,12 @@ ActiveRecord::Schema.define(:version => 20120122034846) do
     t.datetime "updated_at"
   end
 
+  create_table "maps", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "matches", :force => true do |t|
     t.integer  "season_id"
     t.integer  "home_team_id"
@@ -37,14 +43,12 @@ ActiveRecord::Schema.define(:version => 20120122034846) do
     t.boolean  "approved"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "map_id"
   end
 
   create_table "member_match_records", :force => true do |t|
     t.integer  "member_id"
     t.integer  "match_id"
-    t.integer  "kills"
-    t.integer  "deaths"
-    t.integer  "points"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -55,6 +59,7 @@ ActiveRecord::Schema.define(:version => 20120122034846) do
     t.boolean  "active"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "team_id"
   end
 
   create_table "seasons", :force => true do |t|
@@ -64,21 +69,12 @@ ActiveRecord::Schema.define(:version => 20120122034846) do
     t.datetime "updated_at"
   end
 
-  create_table "seasons_teams", :force => true do |t|
-    t.integer "season_id"
-    t.integer "team_id"
-  end
-
-  create_table "team_members", :force => true do |t|
-    t.integer "team_id"
-    t.integer "member_id"
-  end
-
   create_table "teams", :force => true do |t|
     t.string   "name"
     t.string   "tag"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "season_id"
   end
 
 end

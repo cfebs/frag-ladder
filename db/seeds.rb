@@ -19,3 +19,16 @@ frag.members.create(alias: 'ricr')
 ruth.members.create(alias: 'blade')
 ruth.members.create(alias: 'idk')
 ruth.members.create(alias: 'again')
+
+Map.create([
+{ name: 'cp_badlands' },
+{ name: 'cp_granary' },
+{ name: 'cp_gullywash' },
+{ name: 'cp_gravelpit' },
+{ name: 'cp_warmfront' },
+{ name: 'cp_snakewater' },
+{ name: 'cp_yukon_final' },
+{ name: 'koth_pro_viaduct_rc3' },
+{ name: 'cp_standin' },
+{ name: 'ctf_turbine' }
+])

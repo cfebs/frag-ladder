@@ -10,16 +10,10 @@
         <table>
             <tr>
                 <th>player</th>
-                <th>kills</th>
-                <th>deaths</th>
-                <th>points</th>
             </tr>
             <% @match.home_records.each do |r| %>
                 <tr>
                     <td><%= r.member.alias %></td>
-                    <td><%= r.kills%></td>
-                    <td><%= r.deaths%></td>
-                    <td><%= r.points%></td>
                 </tr>
             <% end %>
         </table>
@@ -33,17 +27,11 @@
         <table>
             <tr>
                 <th>player</th>
-                <th>kills</th>
-                <th>deaths</th>
-                <th>points</th>
             </tr>
 
         <% @match.away_records.each do |r| %>
             <tr>
                 <td><%= r.member.alias %></td>
-                <td><%= r.kills%></td>
-                <td><%= r.deaths%></td>
-                <td><%= r.points%></td>
             </tr>
         <% end %>
         </table>

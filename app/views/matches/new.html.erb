@@ -1,7 +1,7 @@
 <h1>Matches#new</h1>
 
 <%= form_for [@season, @match] do |f| %>
-    <%= errors_for @match %>
+<%= errors_for @match %>
 <div class="span-24">
     <div class="span-12">
         <h2>Home</h2>
@@ -13,7 +13,6 @@
             <%= f.label :home_team_score %><br>
             <%= f.text_field :home_team_score %>
         </p>
-        <h3>Player Stats</h3>
     </div>
 
     <div class="span-12 last">
@@ -28,6 +27,12 @@
         </p>
     </div>
 </div>
+
+<h3>Map</h3>
+<div class="span-24">
+<p>
+<%= f.collection_select :map_id, Map.all, :id, :name, :prompt => true %>
+</p>
 
 <%= f.submit 'Advance to Player Stats' %>
 

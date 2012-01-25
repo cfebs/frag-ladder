@@ -22,6 +22,8 @@ FragLadder::Application.routes.draw do
     end
   end
 
+  resources :teams
+
   resources :matches do
     resources :member_match_records
   end

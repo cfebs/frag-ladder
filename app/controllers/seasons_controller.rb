@@ -19,7 +19,11 @@ class SeasonsController < ApplicationController
   def show
     @season = Season.find(params[:id])
     @teams = @season.teams
-    @teams.sort_by { |team| team.total_points }
+    @teams.sort! { |a,b|
+      # http://www.ruby-forum.com/topic/162413
+      comp = b.total_points <=> a.total_points
+      comp.zero? ? b.win_percentage <=> a.win_percentage : comp
+    }
   end
 
   def index
