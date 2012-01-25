@@ -18,7 +18,7 @@ class Team < ActiveRecord::Base
 
   has_many :members
 
-  belongs_to :seasons
+  belongs_to :season
 
   # match functions
   def win? match
