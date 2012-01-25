@@ -21,33 +21,3 @@
     <% end %>
     </tbody>
 </table>
-
-<h3>Matches</h3>
-<table class="grid">
-    <thead>
-    <tr>
-        <th>W/L</th>
-        <th>Date</th>
-        <th>Phase</th>
-        <th>Home</th>
-        <th>Away</th>
-        <th>+</th>
-        <th>-</th>
-        <th>=</th>
-    </tr>
-    </thead>
-    <tbody>
-    <% @team.all_matches.each do |match| %>
-    <tr>
-        <td><%= @team.win_or_loss(match) %></td>
-        <td><%= match.created_at %></td>
-        <td><%= match.phase %></td>
-        <td><%= match.home_team.tag %></td>
-        <td><%= match.away_team.tag %></td>
-        <td><%= p = @team.get_plus match %></td>
-        <td><%= m = @team.get_minus match %></td>
-        <td><%= p - m %></td>
-    </tr>
-    <% end %>
-    </tbody>
-</table>
