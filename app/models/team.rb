@@ -84,7 +84,7 @@ class Team < ActiveRecord::Base
 
   def win_percentage
     if !self.all_matches.empty?
-      (self.wins.length / self.all_matches.length) * 100
+      (self.wins.length.to_f / self.all_matches.length.to_f) * 100
     else
       0
     end
@@ -121,7 +121,7 @@ class Team < ActiveRecord::Base
   end
 
   def total_points
-     self.first_played_bonus +
+    self.first_played_bonus +
       self.wins_plus_handicap +
       self.ties_plus_handicap +
       self.losses_plus_handicap

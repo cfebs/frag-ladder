@@ -39,7 +39,7 @@ class Member < ActiveRecord::Base
 
   def win_percentage
     if !self.matches.empty?
-      (self.wins.length / self.matches.length) * 100
+      (self.wins.length.to_f / self.matches.length.to_f) * 100
     else
       0
     end
