@@ -56,4 +56,29 @@ class Match < ActiveRecord::Base
     return recs
   end
 
+  def get_plus team
+    self.team_score team
+  end
+
+  def get_minus team
+    self.opponent_score team
+  end
+
+  def team_score team
+    if self.home_team_id == team.id
+      self.home_team_score
+    else
+      self.away_team_score
+    end
+  end
+
+  def opponent_score team
+    if self.home_team_id == team.id
+      self.away_team_score
+    else
+      self.home_team_score
+    end
+  end
+
+
 end

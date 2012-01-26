@@ -1,4 +1,5 @@
 <table class="grid season_grid monospaced">
+    <thead>
     <tr>
         <th>#</th>
         <th>Team</th>
@@ -8,6 +9,8 @@
         <th>Win Percent</th>
         <th>Total</th>
     </tr>
+    </thead>
+    <tbody>
     <% @teams.each_with_index do |team, i| %>
     <tr>
         <td><%= i+1 %></td>
@@ -19,5 +22,6 @@
         <td><%= team.total_points %></td>
     </tr>
     <% end %>
+    <tbody>
 </table>
 
