@@ -37,7 +37,6 @@ class Team < ActiveRecord::Base
     end
   end
 
-
   def match_score match
     if match.home_team_id == self.id
       match.home_team_score
@@ -69,10 +68,10 @@ class Team < ActiveRecord::Base
   end
 
   def ties
-    self.all_matches.where('(home_team_id = ? AND home_team_score = away_team_score)
-      OR (away_team_id = ? AND away_team_score = home_team_score)', self.id, self.id)
+    self.all_matches.where('(home_team_id = ? OR away_team_id = ?) AND (home_team_score = away_team_score)', self.id, self.id)
   end
 
+  # used to sort
   def win_percentage
     if !self.all_matches.empty?
       (self.wins.length.to_f / self.all_matches.length.to_f) * 100
@@ -97,14 +96,6 @@ class Team < ActiveRecord::Base
 
   def map_all map
     self.all_matches.where('map_id = ?', map.id)
-  end
-
-  def map_win_percentage map
-    if !self.map_all(map).empty?
-      (self.map_wins(map).length.to_f / self.map_all(map).length.to_f) * 100 
-    else
-      0.to_f
-    end
   end
 
   def get_plus_map map

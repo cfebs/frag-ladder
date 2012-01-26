@@ -9,6 +9,7 @@
         <th>Win%</th>
         <th>+</th>
         <th>-</th>
+        <th>=</th>
         <th>Total%</th>
     </tr>
     </thead>
@@ -16,14 +17,15 @@
     <% Map.all.each do |map| %>
     <tr>
         <td><%= map.name %></td>
-        <td><%= @member.map_wins(map).length %></td>
+        <td><%= wins = @member.map_wins(map).length %></td>
         <td><%= @member.map_losses(map).length %></td>
         <td><%= @member.map_ties(map).length %></td>
         <td><%= all = @member.map_all(map).length %></td>
-        <td><%= @member.map_win_percentage(map)%></td>
-        <td><%= p = @team.get_plus_map map %></td>
-        <td><%= m = @team.get_minus_map map %></td>
-        <td><%= (all.to_f / @team.all_matches.length.to_f) * 100 %></td>
+        <td><%= percentage(wins, @member.matches.length) %></td>
+        <td><%= p = @member.get_plus_map map %></td>
+        <td><%= m = @member.get_minus_map map %></td>
+        <td><%= p-m %></td>
+        <td><%= percentage(all, @member.matches.length) %></td>
     </tr>
     <% end %>
     </tbody>

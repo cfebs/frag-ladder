@@ -6,7 +6,6 @@ class Member < ActiveRecord::Base
   has_many :member_match_records
   has_many :matches, :through => :member_match_records
 
-
   def plus
     self.matches.where('home_team_id = ?', self.team_id).sum(:home_team_score) +
     self.matches.where('away_team_id = ?', self.team_id).sum(:away_team_score)
@@ -28,7 +27,7 @@ class Member < ActiveRecord::Base
   end
 
   def ties
-    self.matches.where('home_team_id = ? OR away_team_id = ? AND (home_team_score = away_team_score)', self.team_id, self.team_id)
+    self.matches.where('(home_team_id = ? OR away_team_id = ?) AND (home_team_score = away_team_score)', self.team_id, self.team_id)
   end
 
   # maps
@@ -55,25 +54,8 @@ class Member < ActiveRecord::Base
 
   def get_minus_map map
     self.matches.where('map_id = ? AND (home_team_id = ?)', map.id, self.id).sum(:away_team_score) +
-    self.all_matches.where('map_id = ? AND (away_team_id = ?)', map.id, self.id).sum(:home_team_score)
+    self.matches.where('map_id = ? AND (away_team_id = ?)', map.id, self.id).sum(:home_team_score)
 
   end
-
-  def map_win_percentage map
-    if !self.map_all(map).empty?
-      (self.map_wins(map).length.to_f / self.map_all(map).length.to_f) * 100 
-    else
-      0.to_f
-    end
-  end
-
-  def win_percentage
-    if !self.matches.empty?
-      (self.wins.length.to_f / self.matches.length.to_f) * 100
-    else
-      0
-    end
-  end
-
 
 end

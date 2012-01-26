@@ -15,10 +15,10 @@
     <tr>
         <td><%= i+1 %></td>
         <td><%= link_to team.tag, season_team_path(@season, team) %></td>
-        <td><%= team.wins.length %></td>
+        <td><%= wins = team.wins.length %></td>
         <td><%= team.losses.length %></td>
         <td><%= team.ties.length %></td>
-        <td><%= team.win_percentage %>%</td>
+        <td><%= percentage(wins, team.all_matches.length) %></td>
         <td><%= team.total_points %></td>
     </tr>
     <% end %>

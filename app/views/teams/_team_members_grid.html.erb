@@ -15,7 +15,7 @@
         <td><%= member.matches.length %></td>
         <td><%= member.plus %></td>
         <td><%= member.minus %></td>
-        <td><%= member.win_percentage %></td>
+        <td><%= percentage(member.wins.length, member.matches.length) %></td>
     </tr>
     <% end %>
     </tbody>
