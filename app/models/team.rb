@@ -37,16 +37,6 @@ class Team < ActiveRecord::Base
     end
   end
 
-  def get_plus_map map
-      self.all_matches.where('map_id = ? AND (home_team_id = ?)', map.id, self.id).sum(:home_team_score) +
-      self.all_matches.where('map_id = ? AND (away_team_id = ?)', map.id, self.id).sum(:away_team_score)
-  end
-
-  def get_minus_map map
-    self.all_matches.where('map_id = ? AND (home_team_id = ?)', map.id, self.id).sum(:away_team_score) +
-      self.all_matches.where('map_id = ? AND (away_team_id = ?)', map.id, self.id).sum(:home_team_score)
-
-  end
 
   def match_score match
     if match.home_team_id == self.id
@@ -117,6 +107,16 @@ class Team < ActiveRecord::Base
     end
   end
 
+  def get_plus_map map
+    self.all_matches.where('map_id = ? AND (home_team_id = ?)', map.id, self.id).sum(:home_team_score) +
+    self.all_matches.where('map_id = ? AND (away_team_id = ?)', map.id, self.id).sum(:away_team_score)
+  end
+
+  def get_minus_map map
+    self.all_matches.where('map_id = ? AND (home_team_id = ?)', map.id, self.id).sum(:away_team_score) +
+      self.all_matches.where('map_id = ? AND (away_team_id = ?)', map.id, self.id).sum(:home_team_score)
+
+  end
 
   # First Play Matches
 

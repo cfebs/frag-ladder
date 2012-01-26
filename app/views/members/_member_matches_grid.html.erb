@@ -1,0 +1,28 @@
+<table class="grid">
+    <thead>
+    <tr>
+        <th>W/L</th>
+        <th>Date</th>
+        <th>Phase</th>
+        <th>Home</th>
+        <th>Away</th>
+        <th>+</th>
+        <th>-</th>
+        <th>=</th>
+    </tr>
+    </thead>
+    <tbody>
+    <% @member.matches.each do |match| %>
+    <tr>
+        <td><%= @team.win_or_loss(match) %></td>
+        <td><%= match.created_at %></td>
+        <td><%= match.phase %></td>
+        <td><%= match.home_team.tag %></td>
+        <td><%= match.away_team.tag %></td>
+        <td><%= p = match.get_plus @team %></td>
+        <td><%= m = match.get_minus @team %></td>
+        <td><%= p - m %></td>
+    </tr>
+    <% end %>
+    </tbody>
+</table>

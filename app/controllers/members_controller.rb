@@ -36,7 +36,8 @@ class MembersController < ApplicationController
   end
 
   def show
-    @member = Team.find(params[:id])
+    @member = Member.find(params[:id])
+    @team = @member.team
   end
 
   def grid

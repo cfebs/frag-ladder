@@ -1,2 +1,4 @@
-<h1>Members#show</h1>
-<p>Find me in app/views/members/show.html.erb</p>
+<h2><%= @member.alias %></h2>
+<h3>Maps</h3>
+<%= render 'member_maps_grid' %>
+<%= render 'member_matches_grid' %>
