@@ -2,6 +2,7 @@
     <thead>
     <tr>
         <th>W/L</th>
+        <th>Map</th>
         <th>Date</th>
         <th>Phase</th>
         <th>Home</th>
@@ -15,6 +16,7 @@
     <% @member.matches.each do |match| %>
     <tr>
         <td><%= @team.win_or_loss(match) %></td>
+        <td><%= match.map.name %></td>
         <td><%= match.created_at %></td>
         <td><%= match.phase %></td>
         <td><%= match.home_team.tag %></td>
